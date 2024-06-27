@@ -91,15 +91,22 @@ class VerificationKey:
         # reference: https://github.com/sec-bit/learning-zkp/blob/master/plonk-intro-cn/4-plonk-constraints.md
         f_eval = (
             # TODO: your code
+            (a_eval + 1 * beta * zeta + gamma)
+            * (b_eval + 2 * beta * zeta + gamma)
+            * (c_eval + 3 * beta * zeta + gamma)
         )
         g_eval = (
             # TODO: your code
+            (a_eval + s1_eval * beta + gamma)
+            * (b_eval + s2_eval * beta + gamma)
+            * (c_eval + s3_eval * beta + gamma)
         )
         permutation_grand_product_eval = z_eval * f_eval - zw_eval * g_eval
 
         # evaluate gate constraints polynomial at zeta
         gate_constraints_eval = (
             # TODO: your code
+            ql_eval * a_eval + qr_eval * b_eval + qm_eval * a_eval * b_eval + qo_eval * c_eval + qc_eval + PI_ev
         )
 
         permutation_first_row_eval = L0_ev * (z_eval - 1)
